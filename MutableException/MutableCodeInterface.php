@@ -7,16 +7,16 @@
  */
 declare(strict_types=1);
 
-namespace Phplrt\Exception;
+namespace Phplrt\Exception\MutableException;
 
 /**
- * Interface MutableFileInterface
+ * Interface MutableCodeInterface
  */
-interface MutableFileInterface
+interface MutableCodeInterface
 {
     /**
-     * @param string $pathname
-     * @return MutableFileInterface|$this
+     * @param int $code
+     * @return MutableCodeInterface|$this
      */
-    public function withFile(string $pathname): self;
+    public function withCode(int $code = 0): self;
 }

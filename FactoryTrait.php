@@ -9,9 +9,6 @@ declare(strict_types=1);
 
 namespace Phplrt\Exception;
 
-use Phplrt\Contracts\Exception\ExternalExceptionInterface;
-use Phplrt\Contracts\Exception\MutableExceptionInterface;
-
 /**
  * Trait FactoryTrait
  */

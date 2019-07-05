@@ -10,21 +10,13 @@ declare(strict_types=1);
 namespace Phplrt\Exception\MutableException;
 
 /**
- * Trait MutableCodeTrait
- *
- * @mixin MutableCodeInterface
- * @mixin \Exception
+ * Interface MutableCodeInterface
  */
-trait MutableCodeTrait
+interface MutableCodeInterface
 {
     /**
      * @param int $code
      * @return MutableCodeInterface|$this
      */
-    public function withCode(int $code = 0): MutableCodeInterface
-    {
-        $this->code = $code;
-
-        return $this;
-    }
+    public function withCode(int $code = 0): self;
 }

@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Phplrt\Exception\MutableException;
 
-use Phplrt\Contracts\Exception\MutableException\MutablePositionInterface;
 use Phplrt\Exception\ColumnPositionTrait;
 
 /**

@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace Phplrt\Exception\MutableException;
 
-use Phplrt\Contracts\Exception\MutableExceptionInterface;
-use Phplrt\Contracts\Io\Readable;
-use Phplrt\Contracts\Position\PositionInterface;
+use Phplrt\Io\Readable;
 use Phplrt\Position\Position;
+use Phplrt\Position\PositionInterface;
+use Phplrt\Exception\MutableExceptionInterface;
 
 /**
  * Trait MutableExceptionTrait
@@ -42,6 +42,25 @@ trait MutableExceptionTrait
             ->withFile($this->resolveFilename($file))
             ->withLine($line)
             ->withColumn($column);
+    }
+
+    /**
+     * @param \Throwable $e
+     * @return MutableExceptionInterface
+     */
+    public function throwsFrom(\Throwable $e): MutableExceptionInterface
+    {
+        $this
+            ->withMessage($e->getMessage())
+            ->withCode($e->getCode())
+            ->withFile($e->getFile())
+            ->withLine($e->getLine());
+
+        if ($e instanceof PositionInterface) {
+            $this->withColumn($e->getColumn());
+        }
+
+        return $this;
     }
 
     /**
@@ -82,24 +101,5 @@ trait MutableExceptionTrait
     private function resolveFilename($file): string
     {
         return $file instanceof Readable ? $file->getPathname() : $file;
-    }
-
-    /**
-     * @param \Throwable $e
-     * @return MutableExceptionInterface
-     */
-    public function throwsFrom(\Throwable $e): MutableExceptionInterface
-    {
-        $this
-            ->withMessage($e->getMessage())
-            ->withCode($e->getCode())
-            ->withFile($e->getFile())
-            ->withLine($e->getLine());
-
-        if ($e instanceof PositionInterface) {
-            $this->withColumn($e->getColumn());
-        }
-
-        return $this;
     }
 }

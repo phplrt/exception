@@ -10,21 +10,13 @@ declare(strict_types=1);
 namespace Phplrt\Exception\MutableException;
 
 /**
- * Trait MutableFileTrait
- *
- * @mixin MutableFileInterface
- * @mixin \Exception
+ * Interface MutableFileInterface
  */
-trait MutableFileTrait
+interface MutableFileInterface
 {
     /**
-     * @param string $name
+     * @param string $pathname
      * @return MutableFileInterface|$this
      */
-    public function withFile(string $name): MutableFileInterface
-    {
-        $this->file = $name;
-
-        return $this;
-    }
+    public function withFile(string $pathname): self;
 }

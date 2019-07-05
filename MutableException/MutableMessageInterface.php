@@ -10,22 +10,14 @@ declare(strict_types=1);
 namespace Phplrt\Exception\MutableException;
 
 /**
- * Trait MutableMessageTrait
- *
- * @mixin MutableMessageInterface
- * @mixin \Exception
+ * Interface MutableMessageInterface
  */
-trait MutableMessageTrait
+interface MutableMessageInterface
 {
     /**
      * @param string $message
-     * @param mixed ...$args
+     * @param array $args
      * @return MutableMessageInterface|$this
      */
-    public function withMessage(string $message, ...$args): MutableMessageInterface
-    {
-        $this->message = \vsprintf($message, $args);
-
-        return $this;
-    }
+    public function withMessage(string $message, ...$args): self;
 }

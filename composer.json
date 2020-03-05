@@ -1,9 +1,12 @@
 {
     "name": "phplrt/exception",
     "type": "library",
-    "description": "The phplrt exception package",
+    "description": "The PHPLRT Exception package.",
     "license": "MIT",
-    "keywords": ["exception", "parsing", "errors", "helpers"],
+    "keywords": [
+        "exception",
+        "formatting"
+    ],
     "homepage": "https://github.com/phplrt",
     "support": {
         "issues": "https://github.com/phplrt/phplrt/issues",
@@ -16,26 +19,18 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "ext-spl": "*",
-        "ext-pcre": "*",
-        "ext-json": "*",
-        "ext-mbstring": "*",
-        "phplrt/source": "^3.0",
-        "phplrt/position": "^3.0",
-        "phplrt/exception-contracts": "^3.0"
+        "php": ">=7.1.3",
+        "phplrt/io": "1.1.*|1.1.x-dev",
+        "phplrt/position": "1.1.*|1.1.x-dev"
     },
     "autoload": {
         "psr-4": {
-            "Phplrt\\Exception\\": "src"
+            "Phplrt\\Exception\\": ""
         }
-    },
-    "provide": {
-        "phplrt/exception-contracts-implementation": "^3.0"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.0.x-dev"
+            "master": "1.1.x-dev"
         }
     },
     "config": {

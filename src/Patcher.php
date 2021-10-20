@@ -59,9 +59,9 @@ final class Patcher
     private function patch(): void
     {
         if (
-            // Position not defined
+            // position not defined
             ($this->line === null && $this->offset === null) ||
-            // Source not defined
+            // source not defined
             $this->source === null
         ) {
             return;

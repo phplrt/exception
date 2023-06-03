@@ -1,12 +1,5 @@
 <?php
 
-/**
- * This file is part of phplrt package.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Phplrt\Exception;
@@ -18,14 +11,14 @@ class LineReader
     /**
      * @var array<int<0, max>, string>
      */
-    private array $lines;
+    private array $lines = [];
 
     /**
      * @param ReadableInterface $source
      */
     public function __construct(ReadableInterface $source)
     {
-        $filter = static fn(string $line): string => \trim($line, "\r\0");
+        $filter = static fn (string $line): string => \trim($line, "\r\0");
 
         $this->lines = \array_map($filter, \explode("\n", $source->getContents()));
     }

@@ -13,19 +13,15 @@ class LineReader
      */
     private array $lines = [];
 
-    /**
-     * @param ReadableInterface $source
-     */
     public function __construct(ReadableInterface $source)
     {
-        $filter = static fn (string $line): string => \trim($line, "\r\0");
+        $filter = static fn(string $line): string => \trim($line, "\r\0");
 
         $this->lines = \array_map($filter, \explode("\n", $source->getContents()));
     }
 
     /**
      * @param int<1, max> $line
-     * @return string
      */
     public function readLine(int $line): string
     {
@@ -44,7 +40,7 @@ class LineReader
         [$from, $to] = $from > $to ? [$to, $from] : [$from, $to];
 
         for ($i = $from; $i <= $to; ++$i) {
-            if (! isset($this->lines[$i - 1])) {
+            if (!isset($this->lines[$i - 1])) {
                 break;
             }
 

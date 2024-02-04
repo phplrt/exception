@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Phplrt\Exception\Tests;
+namespace Phplrt\Exception\Tests\Unit;
 
 use Phplrt\Contracts\Lexer\TokenInterface;
 use Phplrt\Exception\UndefinedToken;
 use Phplrt\Position\Position;
+use PHPUnit\Framework\Attributes\Group;
 
-class UndefinedTokenTestCase extends TestCase
+#[Group('phplrt/exception'), Group('unit')]
+class UndefinedTokenTest extends TestCase
 {
     private function create(string $text = '', int $offset = 0): UndefinedToken
     {

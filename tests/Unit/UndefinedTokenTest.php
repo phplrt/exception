@@ -7,9 +7,7 @@ namespace Phplrt\Exception\Tests\Unit;
 use Phplrt\Contracts\Lexer\TokenInterface;
 use Phplrt\Exception\UndefinedToken;
 use Phplrt\Position\Position;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('phplrt/exception'), Group('unit')]
 class UndefinedTokenTest extends TestCase
 {
     private function create(string $text = '', int $offset = 0): UndefinedToken

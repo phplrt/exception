@@ -12,9 +12,12 @@ use Phplrt\Contracts\Position\PositionInterface;
  */
 final class UndefinedToken implements TokenInterface
 {
-    public function __construct(
-        private readonly PositionInterface $position,
-    ) {}
+    private PositionInterface $position;
+
+    public function __construct(PositionInterface $position)
+    {
+        $this->position = $position;
+    }
 
     public function getName(): string
     {

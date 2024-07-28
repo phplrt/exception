@@ -6,10 +6,10 @@ namespace Phplrt\Exception;
 
 use Phplrt\Contracts\Exception\RuntimeExceptionInterface;
 use Phplrt\Contracts\Lexer\TokenInterface;
-use Phplrt\Contracts\Position\PositionInterface;
 use Phplrt\Contracts\Source\FileInterface;
 use Phplrt\Contracts\Source\ReadableInterface;
 use Phplrt\Position\Position;
+use Phplrt\Contracts\Position\PositionInterface;
 use Phplrt\Source\File;
 
 abstract class RuntimeException extends \RuntimeException implements RuntimeExceptionInterface
@@ -20,7 +20,10 @@ abstract class RuntimeException extends \RuntimeException implements RuntimeExce
 
     private string $original;
 
-    public function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null)
+    /**
+     * @param \Throwable|null $previous
+     */
+    public function __construct(string $message = '', int $code = 0, \Throwable $previous = null)
     {
         $this->original = $message;
 

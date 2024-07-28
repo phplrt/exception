@@ -31,7 +31,6 @@ class LineReader
     /**
      * @param int<1, max> $from
      * @param int<1, max> $to
-     *
      * @return iterable<int<1, max>, string>
      */
     public function readLines(int $from, int $to): iterable

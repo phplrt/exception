@@ -18,12 +18,13 @@ abstract class RuntimeException extends \RuntimeException implements RuntimeExce
 
     private ?ReadableInterface $source = null;
 
-    public function __construct(
-        private readonly string $original = '',
-        int $code = 0,
-        ?\Throwable $previous = null,
-    ) {
-        parent::__construct($this->original, $code, $previous);
+    private string $original;
+
+    public function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null)
+    {
+        $this->original = $message;
+
+        parent::__construct($message, $code, $previous);
     }
 
     public function getOriginalMessage(): string

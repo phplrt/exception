@@ -18,13 +18,12 @@ abstract class RuntimeException extends \RuntimeException implements RuntimeExce
 
     private ?ReadableInterface $source = null;
 
-    private string $original;
-
-    public function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null)
-    {
-        $this->original = $message;
-
-        parent::__construct($message, $code, $previous);
+    public function __construct(
+        private readonly string $original = '',
+        int $code = 0,
+        ?\Throwable $previous = null,
+    ) {
+        parent::__construct($this->original, $code, $previous);
     }
 
     public function getOriginalMessage(): string
@@ -52,12 +51,12 @@ abstract class RuntimeException extends \RuntimeException implements RuntimeExce
     {
         $file = $this->getSource();
 
-        if ($file instanceof FileInterface && $this->token) {
+        if ($file instanceof FileInterface && $this->token !== null) {
             $this->file = $file->getPathname();
             $this->line = $this->getPosition()->getLine();
         }
 
-        if ($this->source && $this->token) {
+        if ($this->source !== null && $this->token !== null) {
             $this->message = $this->original . $this->getMessageSuffix($this->source, $this->token);
         }
     }

@@ -6,7 +6,6 @@ namespace Phplrt\Exception;
 
 use Phplrt\Contracts\Lexer\TokenInterface;
 use Phplrt\Contracts\Position\PositionInterface;
-use Phplrt\Lexer\Token\EndOfInput;
 
 /**
  * @internal This class can be used for internal representation of exceptions
@@ -19,7 +18,7 @@ final class UndefinedToken implements TokenInterface
 
     public function getName(): string
     {
-        return EndOfInput::DEFAULT_TOKEN_NAME;
+        return TokenInterface::END_OF_INPUT;
     }
 
     public function getOffset(): int

@@ -26,9 +26,9 @@ class ErrorInformationRenderer
      */
     public const DEFAULT_HIGHLIGHT_CHAR = '^';
 
-    private readonly PositionInterface $position;
+    private PositionInterface $position;
 
-    private readonly LineReader $reader;
+    private LineReader $reader;
 
     private string $sourceTemplate = self::DEFAULT_SOURCE_TEMPLATE;
 

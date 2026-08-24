@@ -10,10 +10,6 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    /**
-     * @param iterable<mixed, SourceLine> $lines
-     * @return list<string>
-     */
     protected static function describe(iterable $lines): array
     {
         $result = [];
@@ -24,8 +20,8 @@ abstract class TestCase extends BaseTestCase
                     '>#%d@%d:%d-%d: %s',
                     $line->number,
                     $line->offset,
-                    $line->startColumn,
-                    $line->startColumn + $line->width,
+                    $line->captured->offset,
+                    $line->captured->endsAt,
                     $line->value,
                 )
                 : \sprintf(' #%d@%d: %s', $line->number, $line->offset, $line->value);
@@ -34,9 +30,6 @@ abstract class TestCase extends BaseTestCase
         return $result;
     }
 
-    /**
-     * @param iterable<mixed, SourceLine> $lines
-     */
     protected static function assertLinesMatchSource(string $source, iterable $lines): void
     {
         $expected = null;
